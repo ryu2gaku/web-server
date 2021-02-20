@@ -1,0 +1,35 @@
+extends layout.pug
+
+block top-scripts
+  script(src="node_modules/vue/dist/vue.min.js")
+
+block content
+
+  #app.container.my-4
+    h1.text-center 留言板
+    p.text-center
+      small.text-muted 所有设备可以同步留言
+
+    .input-group.my-3
+      .input-group-prepend
+        span.input-group-text 请输入内容
+      textarea.form-control(v-model="comment" wrap="hard")
+      .input-group-append
+        button.btn.btn-outline-secondary(type="button" @click="submit") 提交
+
+    //- 列表组
+    .list-group
+      .list-group-item.list-group-item-action(v-for="item in commentList")
+        .d-flex.justify-content-between.w-100
+          small.text-primary {{item.ip}}
+          small.text-success 
+            | {{new Date(item.date).getFullYear()}}-{{new Date(item.date).getMonth() + 1}}-{{new Date(item.date).getDate()}}
+            | {{new Date(item.date).getHours() < 10 ? ('0' + new Date(item.date).getHours()) : new Date(item.date).getHours()
+            | }}:{{new Date(item.date).getMinutes() < 10 ? ('0' + new Date(item.date).getMinutes()) : new Date(item.date).getMinutes()}}
+        .w-100
+          small.text-muted {{item.userAgent}}
+        //- 留言需要保留换行符
+        .py-1.text-body(v-html='item.content' style='white-space: pre-wrap;')
+
+block append bottom-scripts
+  script(src='javascripts/board.js')

@@ -1,0 +1,14 @@
+extends layout.pug
+
+block content
+  .container.my-4
+    h1.text-center 文件下载
+    p.text-center 
+      small.text-muted 可下载项目 uploads 目录中的文件
+
+    if isDirExisted
+      .list-group
+        each val in fileList
+          a.list-group-item.list-group-item-action(href=`download/file/${val}` download=val)= val
+    else
+      .alert.alert-danger 下载目录不存在，请用其他设备上传文件到下载目录来提供该设备下载。

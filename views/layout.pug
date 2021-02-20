@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    title= title
+    block links
+      link(rel="stylesheet" href="/stylesheets/font.css")
+      link(rel="stylesheet", href="node_modules/bootstrap/dist/css/bootstrap.min.css")
+      link(rel="stylesheet", href="node_modules/animate.css/animate.min.css")
+    block top-scripts
+
+  body
+    //- 导航条
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href="/") WebServer
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent")
+        span.navbar-toggler-icon
+
+      .collapse.navbar-collapse#navbarSupportedContent
+        ul.navbar-nav.mr-auto
+          li.nav-item(class={active: router === 'board' })
+            a.nav-link(href="/board") 留言板
+          li.nav-item(class={active: router === 'upload' })
+            a.nav-link(href="/upload") 文件上传
+          li.nav-item(class={active: router === 'download' })
+            a.nav-link(href="/download") 文件下载
+
+    block content
+
+    block bottom-scripts
+      //- jquery.slim.min.js
+      //- slim 即简化版，比普通版本缺少 Ajax 和特效模块模块
+      script(src="node_modules/jquery/dist/jquery.min.js")
+      script(src="node_modules/bootstrap/dist/js/bootstrap.min.js")

@@ -1,0 +1,19 @@
+extends layout.pug
+
+block append links
+  link(rel="stylesheet", href="node_modules/bootstrap-fileinput/css/fileinput.min.css")
+
+block content
+  
+  .container.my-4
+    h1.text-center 文件上传
+    p.text-center 
+      small.text-muted 文件将上传到项目目录下的 uploads 目录
+
+    input#uploadfile(type="file" multiple name="file")
+
+block append bottom-scripts
+  script(src="node_modules/bootstrap-fileinput/js/fileinput.min.js")
+  //- 中文插件，必须放在 fileinput.js 之后
+  script(src="node_modules/bootstrap-fileinput/js/locales/zh.js")
+  script(src='javascripts/upload.js')

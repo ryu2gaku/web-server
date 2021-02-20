@@ -1,0 +1,11 @@
+extends layout.pug
+
+block content
+
+  .container.mt-5
+    h1.display-4.animate__animated.animate__fadeInDown= title
+    p.lead.mt-4.animate__animated.animate__fadeInLeft.animate__delay-1s Welcome to #{title}。
+    p.lead.text-muted.animate__animated.animate__fadeInRight.animate__delay-2s.
+      检测到本机 IP 地址为 #[kbd= ip]，同一局域网下的其他设备可通过
+      #[kbd #[a.text-white(href=`http://${ip}:${port}`) http://#{ip}:#{port}]]
+      访问服务器。
